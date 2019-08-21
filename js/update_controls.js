@@ -175,7 +175,7 @@ function updateSynthLead(id) {
 			'A7' : 'A7.[mp3|ogg]',
 			'C8' : 'C8.[mp3|ogg]'
 		}, {
-			'baseUrl' : '/sounds/salamander/'
+			'baseUrl' : 'sounds/salamander/'
 		});
 		lead_synth.release = 3;
 		lead_synth.volume.value = 3;
@@ -196,7 +196,7 @@ function updateSynthLead(id) {
 			'F2' : 'F2.[wav]',
 			'F3' : 'F2F3.[wav]',
 		}, {
-			'baseUrl' : '/sounds/acoustic_guitar/'
+			'baseUrl' : 'sounds/acoustic_guitar/'
 		});
 	}
 	if (boolArp == 1) {
@@ -281,7 +281,7 @@ function updateSynthBass(id) {
 			'A7' : 'A7.[mp3|ogg]',
 			'C8' : 'C8.[mp3|ogg]'
 		}, {
-			'baseUrl' : '/sounds/salamander/'
+			'baseUrl' : 'sounds/salamander/'
 		});
 		bass_synth.release = 3;
 	}

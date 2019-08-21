@@ -341,9 +341,13 @@ function createUItuners() {
 		if(boolArp == 0) {
 			if (boolMidi == 0) {
 				if(state == true) {
+					Tone.context.resume().then(() => {
 					lead_synth.triggerAttack(note);
+				});
 				} else {
+					Tone.context.resume().then(() => {
 					lead_synth.triggerRelease();
+				});
 				}
 			}
 		}
@@ -554,15 +558,15 @@ var modeTypeElement = document.getElementById("deepdrum-select-mode");
 var mode = modeTypeElement.options[modeTypeElement.selectedIndex].value;
 
 var instrument_player = [
-	"/sounds/drum-kits/" + kitType +  "/kick.mp3",
-	"/sounds/drum-kits/" + kitType +  "/snare.mp3",
-	"/sounds/drum-kits/" + kitType +  "/hihat-closed.mp3",
-	"/sounds/drum-kits/" + kitType +  "/hihat-open.mp3",
-	"/sounds/drum-kits/" + kitType +  "/tom-low.mp3",
-	"/sounds/drum-kits/" + kitType +  "/tom-mid.mp3",
-	"/sounds/drum-kits/" + kitType +  "/tom-high.mp3",
-	"/sounds/drum-kits/" + kitType +  "/clap.mp3",
-	"/sounds/drum-kits/" + kitType +  "/ride.mp3"
+new Tone.Buffer(	"sounds/drum-kits/" + kitType +  "/kick.mp3"),
+new Tone.Buffer(	"sounds/drum-kits/" + kitType +  "/snare.mp3"),
+new Tone.Buffer(	"sounds/drum-kits/" + kitType +  "/hihat-closed.mp3"),
+new Tone.Buffer(	"sounds/drum-kits/" + kitType +  "/hihat-open.mp3"),
+new Tone.Buffer(	"sounds/drum-kits/" + kitType +  "/tom-low.mp3"),
+new Tone.Buffer(	"sounds/drum-kits/" + kitType +  "/tom-mid.mp3"),
+new Tone.Buffer(	"sounds/drum-kits/" + kitType +  "/tom-high.mp3"),
+new Tone.Buffer(	"sounds/drum-kits/" + kitType +  "/clap.mp3"),
+new Tone.Buffer(	"sounds/drum-kits/" + kitType +  "/ride.mp3")
 ]
 
 //---------------------------
@@ -603,15 +607,15 @@ function updateKit() {
 	kitType = kitTypeElement.options[kitTypeElement.selectedIndex].value;
 
 	instrument_player = [
-		"/sounds/drum-kits/" + kitType +  "/kick.mp3",
-		"/sounds/drum-kits/" + kitType +  "/snare.mp3",
-		"/sounds/drum-kits/" + kitType +  "/hihat-closed.mp3",
-		"/sounds/drum-kits/" + kitType +  "/hihat-open.mp3",
-		"/sounds/drum-kits/" + kitType +  "/tom-low.mp3",
-		"/sounds/drum-kits/" + kitType +  "/tom-mid.mp3",
-		"/sounds/drum-kits/" + kitType +  "/tom-high.mp3",
-		"/sounds/drum-kits/" + kitType +  "/clap.mp3",
-		"/sounds/drum-kits/" + kitType +  "/ride.mp3",
+		"sounds/drum-kits/" + kitType +  "/kick.mp3",
+		"sounds/drum-kits/" + kitType +  "/snare.mp3",
+		"sounds/drum-kits/" + kitType +  "/hihat-closed.mp3",
+		"sounds/drum-kits/" + kitType +  "/hihat-open.mp3",
+		"sounds/drum-kits/" + kitType +  "/tom-low.mp3",
+		"sounds/drum-kits/" + kitType +  "/tom-mid.mp3",
+		"sounds/drum-kits/" + kitType +  "/tom-high.mp3",
+		"sounds/drum-kits/" + kitType +  "/clap.mp3",
+		"sounds/drum-kits/" + kitType +  "/ride.mp3",
 	]
 	disposePlayers();
 	loadPlayers();
@@ -622,15 +626,15 @@ function updateKit() {
 }
 
 var drum_image_map = [
-	"/images/live-demo/deepdrum/kick.png",
-	"/images/live-demo/deepdrum/snare.png",
-	"/images/live-demo/deepdrum/hihat-closed.png",
-	"/images/live-demo/deepdrum/hihat-open.png",
-	"/images/live-demo/deepdrum/tom-high.png",
-	"/images/live-demo/deepdrum/tom-high.png",
-	"/images/live-demo/deepdrum/tom-high.png",
-	"/images/live-demo/deepdrum/clap.png",
-	"/images/live-demo/deepdrum/stick.png",
+	"images/kick.png",
+	"images/snare.png",
+	"images/hihat-closed.png",
+	"images/hihat-open.png",
+	"images/tom-high.png",
+	"images/tom-high.png",
+	"images/tom-high.png",
+	"images/clap.png",
+	"images/stick.png",
 ]
 
 var drum_color_map = [
@@ -1045,7 +1049,7 @@ function playDeepDrum(id) {
 	if(recordPattern == 1) {
 		toggle_play = 0;
 		btn.style.backgroundColor = "#64e0e5";
-		btn.style.backgroundImage = "url('/images/live-demo/deepdrum/play.png')";
+		btn.style.backgroundImage = "url('images/play.png')";
 		scheduleTimeOff();
 		//updateDisplay(1, master_tag_patterns[selectedTagId]);
 		timelineIndicator.style.left = "0px";
@@ -1062,21 +1066,21 @@ function playDeepDrum(id) {
 				} else {
 					toggle_play = 1;
 					btn.style.backgroundColor = "#f0ff66";
-					btn.style.backgroundImage = "url('/images/live-demo/deepdrum/stop.png')";
+					btn.style.backgroundImage = "url('images/stop.png')";
 					scheduleTimeOn();
 				}	
 			}  
 		} else {
 			toggle_play = 1;
 			btn.style.backgroundColor = "#f0ff66";
-			btn.style.backgroundImage = "url('/images/live-demo/deepdrum/stop.png')";
+			btn.style.backgroundImage = "url('images/stop.png')";
 			scheduleTimeOff();
 			scheduleTimeOn();
 		}
 	} else {
 		toggle_play = 0;
 		btn.style.backgroundColor = "#64e0e5";
-		btn.style.backgroundImage = "url('/images/live-demo/deepdrum/play.png')";
+		btn.style.backgroundImage = "url('images/play.png')";
 		scheduleTimeOff();
 		//updateDisplay(1, master_tag_patterns[selectedTagId]);
 		timelineIndicator.style.left = "0px";
@@ -1153,7 +1157,7 @@ function playTimeline(time) {
 		var btn = document.getElementById("deepdrum-play");
 		toggle_play = 0;
 		btn.style.backgroundColor = "#64e0e5";
-		btn.style.backgroundImage = "url('/images/live-demo/deepdrum/play.png')";
+		btn.style.backgroundImage = "url('images/play.png')";
 		scheduleTimeOff();
 		clearIndicatorInStepButtons();
 		count = 0;
@@ -1169,7 +1173,7 @@ function playTimeline(time) {
 
 			var d_btn = document.getElementById("deepdrum-record");
 			d_btn.style.backgroundColor = "#41c443";
-			d_btn.style.backgroundImage = "url('/images/live-demo/deepdrum/record-stop.png')";
+			d_btn.style.backgroundImage = "url('images/record-stop.png')";
 			scheduleTimeOff();
 			clearIndicatorInStepButtons();
 			waitAndRender();
@@ -1440,7 +1444,7 @@ function downloadPattern(id) {
 		chunks    = [];
 
 		btn.style.backgroundColor = "#ffffff";
-		btn.style.backgroundImage = "url('/images/live-demo/deepdrum/record-start.png')";
+		btn.style.backgroundImage = "url('images/record-start.png')";
 		toggle_play = 0;
 		playDeepDrum("deepdrum-play");
 
@@ -1455,7 +1459,7 @@ function downloadPattern(id) {
 		}
 
 		btn.style.backgroundColor = "#f62e2e";
-		btn.style.backgroundImage = "url('/images/live-demo/deepdrum/record-stop.png')";
+		btn.style.backgroundImage = "url('images/record-stop.png')";
 		toggle_play = 1;
 		playDeepDrum("deepdrum-play");
 		waitAndRender();
